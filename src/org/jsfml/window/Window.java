@@ -1,13 +1,11 @@
 package org.jsfml.window;
 
-import org.jsfml.CsfmlWindowLibrary;
-import org.jsfml.JSFML;
+import org.jsfml.internal.CsfmlWindowLibrary;
+import org.jsfml.internal.JSFML;
 import org.jsfml.window.event.Event;
 
-import jnr.ffi.ObjectReferenceManager;
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;
-import jnr.ffi.Struct.Pointer;
 
 public class Window extends Struct {
 	public final class WindowStyle {
@@ -49,17 +47,8 @@ public class Window extends Struct {
 	
 	public boolean pollEvent(Event event) {				
 		boolean toReturn=(m_csfmlWindowLibrary.sfWindow_pollEvent(m_nativeWindowPointer, event)==1)?true : false;
-		//System.out.println(event.type);
-		
-		
-		
-		if(JSFML.getCsfmlGraphicsRuntime().getLastError()!=0) {
-			System.out.println(JSFML.getCsfmlGraphicsRuntime().getLastError());
-			System.exit(0);
-		}
-		
+		//System.out.println(event.type);		
 		//System.out.println(event);
-		
 		return toReturn;
 	}
 	

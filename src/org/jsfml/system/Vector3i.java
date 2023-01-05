@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Represents two-dimensional vectors using floating point coordinates and provides
  * arithmetic operations on floating point 2D vectors.
  */
-public final strictfp class Vector3f implements Serializable, Comparable<Vector3f> {
+public final strictfp class Vector3i implements Serializable, Comparable<Vector3i> {
 	private static final long serialVersionUID = -2082611034304583379L;
 	
 	/**
      * The zero vector.
      */
-	public static final Vector3f ZERO=new Vector3f(0, 0, 0);
+	public static final Vector3i ZERO=new Vector3i(0, 0, 0);
 	
 	/**
      * The vector's X coordinate.
@@ -35,7 +35,7 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
 	 * 
 	 * @param v the copy Constructor
 	 */
-	public Vector3f(Vector2f v) {
+	public Vector3i(Vector2f v) {
 		this(v.x, v.y, 0);
 	}
 	
@@ -46,8 +46,17 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      *
      * @param v the vector to convert.
      */
-    public Vector3f(Vector2i v) {
+    public Vector3i(Vector2i v) {
         this(v.x, v.y, 0);
+    }
+    
+    /**
+     * Constructs a new vector from the given one.
+     *
+     * @param v the Vector3i to copy.
+     */
+    public Vector3i(Vector3i v) {
+    	this(v.x, v.y, v.z);
     }
     
     /**
@@ -55,24 +64,29 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      *
      * @param x the X coordinate.
      * @param y the Y coordinate.
+     * @param z the Z coordinate.
      */
-	public Vector3f(float x, float y, float z) {
+	public Vector3i(float x, float y, float z) {
 		setX(x);
 		setY(y);
 		setZ(z);
 	}
-	
-	public Vector3f setX(float x) {
+	/**
+	 * 
+	 * @param x
+	 * @return Vector3i
+	 */
+	public Vector3i setX(float x) {
 		this.x=x;
 		return this;
 	}
 	
-	public Vector3f setY(float y) {
+	public Vector3i setY(float y) {
 		this.y=y;
 		return this;
 	}
 	
-	public Vector3f setZ(float z) {
+	public Vector3i setZ(float z) {
 		this.z=z;
 		return this;
 	}
@@ -86,7 +100,7 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
 		return x*x+y*y+z*z;
 	}
 	
-	public int compareTo(Vector3f v) {
+	public int compareTo(Vector3i v) {
 		float myLength=lengthFast();
 		float length=v.lengthFast();
 		if(myLength>length) {
@@ -109,12 +123,12 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param b the second vector.
      * @return a new vector, representing the sum of the two vectors.
      */
-    public Vector3f add(Vector3f v) {
+    public Vector3i add(Vector3i v) {
         return add(v.x, v.y, v.z);
     }
     
-    public Vector3f add(float x, float y, float z) {
-    	return new Vector3f(this.x+x, this.y+y, this.z+z);
+    public Vector3i add(float x, float y, float z) {
+    	return new Vector3i(this.x+x, this.y+y, this.z+z);
     }
 
     /**
@@ -124,12 +138,12 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param b the second vector.
      * @return a new vector, representing the difference between the two vectors.
      */
-    public Vector3f sub(Vector3f v) {
+    public Vector3i sub(Vector3i v) {
     	return sub(v.x, v.y, v.z);
     }
 
-    public Vector3f sub(float x, float y, float z) {
-    	return new Vector3f(this.x - x, this.y - y, this.z - z);	
+    public Vector3i sub(float x, float y, float z) {
+    	return new Vector3i(this.x - x, this.y - y, this.z - z);	
     }
     
     /**
@@ -139,8 +153,8 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param b the second vector.
      * @return a new vector, representing the "product" of the two vectors.
      */
-    public Vector3f componentwiseMul(Vector3f v) {
-        return new Vector3f(x * v.x, y * v.y, z * v.z);
+    public Vector3i componentwiseMul(Vector3i v) {
+        return new Vector3i(x * v.x, y * v.y, z * v.z);
     }
 
     /**
@@ -150,8 +164,8 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param b the second vector.
      * @return a new vector, representing the "quotient" of the two vectors.
      */
-    public Vector3f componentwiseDiv(Vector3f v) {
-        return new Vector3f(x / v.x, y / v.y, z / v.z);
+    public Vector3i componentwiseDiv(Vector3i v) {
+        return new Vector3i(x / v.x, y / v.y, z / v.z);
     }
 
     /**
@@ -161,8 +175,8 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param s the scalar to multiply by.
      * @return a new vector, representing the scaled vector.
      */
-    public Vector3f mul(float s) {
-        return new Vector3f(x * s, y * s, z * s);
+    public Vector3i mul(float s) {
+        return new Vector3i(x * s, y * s, z * s);
     }
 
     /**
@@ -172,8 +186,8 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param s the scalar to divide by.
      * @return a new vector, representing the scaled vector.
      */
-    public Vector3f div(float s) {
-        return new Vector3f(x / s, y / s, z / s);
+    public Vector3i div(float s) {
+        return new Vector3i(x / s, y / s, z / s);
     }
 
     /**
@@ -182,11 +196,11 @@ public final strictfp class Vector3f implements Serializable, Comparable<Vector3
      * @param v the vector.
      * @return a new vector, representing the negation of the given vector.
      */
-    public Vector3f neg() {
-        return new Vector3f(-x, -y, -z);
+    public Vector3i neg() {
+        return new Vector3i(-x, -y, -z);
     }
 
-    public boolean equals(Vector3f v) {
+    public boolean equals(Vector3i v) {
         return compareTo(v)==0;
     }
 

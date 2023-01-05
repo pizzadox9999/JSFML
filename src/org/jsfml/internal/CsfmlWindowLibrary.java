@@ -1,4 +1,4 @@
-package org.jsfml;
+package org.jsfml.internal;
 
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
