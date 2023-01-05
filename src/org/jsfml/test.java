@@ -42,7 +42,19 @@ public class test {
         // window.setSize(new Vector2u(800, 600));
         
         while(window.isOpen()) {
-        	
+        	Event event;
+        	while((event=window.pollEvent())!=null) {
+        		switch (event.type) {
+				case CLOSED:
+					window.close();
+					break;
+				case KEY_PRESSED:
+					System.out.println(event.asKeyEvent());
+					break;
+				}
+        	}
         }
+        
+        
     }
 }

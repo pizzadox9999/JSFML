@@ -172,5 +172,9 @@ public class Event {
      */
     public Event(int type) {
         this.type = Type.values()[type];
-    }   
+    }
+    
+    public KeyEvent asKeyEvent() {
+    	return null;
+    }
 }
