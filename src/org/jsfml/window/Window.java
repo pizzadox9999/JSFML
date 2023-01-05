@@ -1,7 +1,7 @@
 package org.jsfml.window;
 
-import org.jsfml.internal.CsfmlWindowLibrary;
-import org.jsfml.internal.JSFML;
+import org.jsfml.CsfmlWindowLibrary;
+import org.jsfml.JSFML;
 import org.jsfml.window.event.Event;
 
 import jnr.ffi.ObjectReferenceManager;
@@ -32,7 +32,7 @@ public class Window extends Struct {
 	
 	public Window(Runtime runtime) {
 		super(runtime);
-		m_csfmlWindowLibrary=JSFML.getCsfmlWindowLibrary();
+		m_csfmlWindowLibrary=JSFML.getCsfmlWindowLib();
 	}
 	
 	public void create(VideoMode videoMode, java.lang.String title, int style) {
@@ -48,7 +48,7 @@ public class Window extends Struct {
 	}
 	
 	public boolean pollEvent(Event event) {				
-		boolean toReturn=false;//(m_csfmlWindowLibrary.sfWindow_pollEvent(m_nativeWindowPointer, getMemory(event))==1)?true : false;
+		boolean toReturn=(m_csfmlWindowLibrary.sfWindow_pollEvent(m_nativeWindowPointer, event)==1)?true : false;
 		//System.out.println(event.type);
 		
 		
@@ -61,14 +61,6 @@ public class Window extends Struct {
 		//System.out.println(event);
 		
 		return toReturn;
-	}
-	
-	public boolean waitEvent(Event event) {
-		return false;//return (m_csfmlWindowLibrary.sfWindow_waitEvent(m_nativeWindowPointer, getMemory(event))==1)?true : false;
-	}
-	
-	public void close() {
-		m_csfmlWindowLibrary.sfWindow_close(m_nativeWindowPointer);
 	}
 	
 }

@@ -1,27 +1,27 @@
 package org.jsfml.window.event;
 
+import org.jsfml.JSFML;
+
+import jnr.ffi.Runtime;
+
 public class KeyEvent extends Event {
-	public int code=0;
-	public boolean alt=false;
-	public boolean control=false;
-	public boolean shift=false;
-	public boolean system=false;
+	//public Signed32 eventType=new Signed32();
+	public Signed32 code=new Signed32();
+	public int alt;
+	public int control;
+	public int shift;
+	public int system;
 	
-	public KeyEvent(int type, int code, boolean alt, boolean control, boolean shift, boolean system) {
-		super(type);
-		this.code=code;
-		this.alt=alt;
-		this.control=control;
-		this.shift=shift;
-		this.system=system;
+	public KeyEvent(int eventType) {
+		this();
+		this.type.set(eventType);
 	}
 	
-	@Override
-	public KeyEvent asKeyEvent() {
-		return this;
+	public KeyEvent() {
+		this(JSFML.getCsfmlRuntime());
 	}
 	
-	public String toString() {
-		return "TYPE: "+type+" CODE: "+code+" ALT: "+alt+" CONTROL: "+control+" SHIFT: "+shift+" SYSTEM: "+system;
+	public KeyEvent(Runtime runtime) {
+		super(runtime);
 	}
 }

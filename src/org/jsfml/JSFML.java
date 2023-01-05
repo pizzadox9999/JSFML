@@ -1,4 +1,4 @@
-package org.jsfml.internal;
+package org.jsfml;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +47,7 @@ public final class JSFML {
 		m_csfmlGraphicsLib=m_csfmlLib;
 	}
 	
-	public static CsfmlWindowLibrary getCsfmlWindowLibrary() {
+	public static CsfmlWindowLibrary getCsfmlWindowLib() {
 		return m_csfmlWindowLib;
 	}
 	
@@ -71,7 +71,7 @@ public final class JSFML {
 		return getRuntimeFor(m_csfmlGraphicsLib);
 	}
 	
-	public static CsfmlLibrary getCsfmlLibrary() {
+	public static CsfmlLibrary getCsfmlLib() {
 		return m_csfmlLib;
 	}
 	

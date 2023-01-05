@@ -1,6 +1,6 @@
 package org.jsfml.window;
 
-import org.jsfml.internal.JSFML;
+import org.jsfml.JSFML;
 
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;

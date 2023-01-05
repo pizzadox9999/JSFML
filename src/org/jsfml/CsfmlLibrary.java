@@ -1,4 +1,4 @@
-package org.jsfml.internal;
+package org.jsfml;
 
 public interface CsfmlLibrary extends
 CsfmlSystemLibrary,
