@@ -1,15 +1,23 @@
 package org.jsfml;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.internal.JSFML;
 import org.jsfml.system.Vector2i;
 import org.jsfml.system.Vector2u;
 import org.jsfml.window.ContextSettings;
 import org.jsfml.window.VideoMode;
+import org.jsfml.window.Window;
 import org.jsfml.window.Window.WindowStyle;
 import org.jsfml.window.event.Event;
 import org.jsfml.window.event.KeyEvent;
 import org.jsfml.window.event.MouseMoveEvent;
-import org.jsfml.window.event.Event.EventType;
+import org.jsfml.window.event.EventType;
+
+import jnr.ffi.LibraryLoader;
+import jnr.ffi.LibraryOption;
 
 public class test {
 
@@ -39,31 +47,20 @@ public class test {
         // window.setSize(new Vector2u(800, 600));
         
         while(window.isOpen()) {
-        	
-        	Event event=new Event();
-        	while(window.waitEvent(event)) {
-        		switch (event.getType()){
-				case EventType.CLOSED:
-					window.pollEvent(event);
+        	System.out.println("test");
+        	Event event=null;
+        	while((event=window.pollEvent())!=null) {
+        		switch (event.type){
+        		case EventType.CLOSED:
 					window.destroy();
 					break;
 				case EventType.KEY_PRESSED:
-					KeyEvent keyEvent=new KeyEvent(event.getType());
-					window.pollEvent(keyEvent);
-					System.out.println(keyEvent);
-					break;
-				case EventType.MOUSE_MOVED:
-					Event mouseEvent=new Event(event.getType());
-					window.pollEvent(mouseEvent);
-					System.out.println(mouseEvent.mouseMove);
-					break;
-				default:
-					window.pollEvent(event);
+					System.out.println(event.asKeyEvent());
 					break;
 				}	
         	}
-        	/*
-        	for(Event event : window.pollEvents()) {
+        	
+        	/*for(Event event : window.pollEvents()) {
     			switch (event.getType()) {
     			case EventType.CLOSED:
     				window.close();

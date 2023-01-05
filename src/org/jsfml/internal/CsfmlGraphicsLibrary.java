@@ -22,7 +22,9 @@
 //
 ////////////////////////////////////////////////////////////
 
-package org.jsfml;
+package org.jsfml.internal;
+
+import java.nio.Buffer;
 
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.FloatRect;
@@ -46,7 +48,11 @@ import org.jsfml.system.Vector2u;
 import org.jsfml.system.Vector3f;
 import org.jsfml.window.ContextSettings;
 import org.jsfml.window.VideoMode;
+import org.jsfml.window.event.Event;
+
 import jnr.ffi.Pointer;/*✓*/
+import jnr.ffi.annotations.In;
+import jnr.ffi.annotations.Out;
 
 /*
 public interface CsfmlGraphicsLibrary {
@@ -2239,7 +2245,7 @@ public interface CsfmlGraphicsLibrary {
 	 * @return sfTrue if an event was returned, sfFalse if event queue was empty
 	 *
 	*/
-	public int sfRenderWindow_pollEvent(Pointer/*(sfRenderWindow*)*/ renderWindow, Pointer/*( sfEvent*)*/ event);
+	public int sfRenderWindow_pollEvent(Pointer/*(sfRenderWindow*)*/ renderWindow, Buffer eventBuffer);
 
 	/**
 	 * @brief Wait for an event and return it

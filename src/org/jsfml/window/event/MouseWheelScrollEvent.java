@@ -1,14 +1,14 @@
 package org.jsfml.window.event;
 
-import org.jsfml.JSFML;
+import org.jsfml.internal.JSFML;
 
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;
 
 public class MouseWheelScrollEvent extends Struct {
-	public Signed32 eventType=new Signed32();	
-	public int x;
-    public int y;
+	public Signed32 type=new Signed32();	
+	public Signed32 x=new Signed32();
+    public Signed32 y=new Signed32();
     
     public Signed32 wheel=new Signed32();
 	public float delta;

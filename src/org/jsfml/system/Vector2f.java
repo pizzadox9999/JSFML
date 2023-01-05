@@ -1,7 +1,7 @@
 package org.jsfml.system;
 
-import org.jsfml.JSFML;
-import org.jsfml.MathUtil;
+import org.jsfml.internal.JSFML;
+import org.jsfml.internal.MathUtil;
 
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;

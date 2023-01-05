@@ -1,4 +1,4 @@
-package org.jsfml;
+package org.jsfml.internal;
 
 public final class MathUtil {
 	private MathUtil() {

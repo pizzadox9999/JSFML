@@ -1,6 +1,6 @@
 package org.jsfml.graphics;
 
-import org.jsfml.JSFML;
+import org.jsfml.internal.JSFML;
 
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;

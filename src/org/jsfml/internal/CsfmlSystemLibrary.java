@@ -1,3 +1,3 @@
-package org.jsfml;
+package org.jsfml.internal;
 
 public interface CsfmlSystemLibrary {}
