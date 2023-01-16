@@ -1,6 +1,6 @@
 package org.jsfml.window.event;
 
-import org.jsfml.window.KeyBoard.KeyCode;
+import org.jsfml.window.Keyboard;
 
 /**
  * Represents keyboard key events.
@@ -13,34 +13,30 @@ public final class KeyEvent extends Event {
     /**
      * The code of the key that was pressed or released.
      */
-    public final KeyCode key;
+    public final Keyboard.Key key;
 
     /**
      * {@code true} if an {@code ALT} key (left or right) was pressed when the event occured,
      * {@code false} if not.
      */
-    @Deprecated
     public final boolean alt;
 
     /**
      * {@code true} if a {@code SHIFT} key (left or right) was pressed when the event occured,
      * {@code false} if not.
      */
-    @Deprecated
     public final boolean shift;
 
     /**
      * {@code true} if a {@code CTRL} key (left or right) was pressed when the event occured,
      * {@code false} if not.
      */
-    @Deprecated
     public final boolean control;
 
     /**
      * {@code true} if a system key was pressed when the event occured,
      * {@code false} if not.
      */
-    @Deprecated
     public final boolean system;
 
     /**
@@ -58,7 +54,7 @@ public final class KeyEvent extends Event {
      */
     public KeyEvent(int type, int keyCode, boolean alt, boolean shift, boolean control, boolean system) {
         super(type);
-        this.key = KeyCode.values()[keyCode + 1];
+        this.key = Keyboard.Key.values()[keyCode + 1];
         this.alt = alt;
         this.shift = shift;
         this.control = control;
@@ -68,9 +64,5 @@ public final class KeyEvent extends Event {
     @Override
     public KeyEvent asKeyEvent() {
         return this;
-    }
-    
-    public String toString() {
-    	return "TYPE: "+type+" KEY: "+key+" ALT: "+alt+" SHIFT: "+shift+" CONTROL: "+control+" SYSTEM: "+system;
     }
 }
